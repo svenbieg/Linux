@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{DCA42D8C-970B-487C-A955-EEACB468B4B1}</ItemsProjectGuid>
+    <ItemsSccProjectName>$/Shared/Linux</ItemsSccProjectName>
+    <ItemsSccAuxPath>https://svenbieg.visualstudio.com</ItemsSccAuxPath>
+    <ItemsSccLocalPath>.</ItemsSccLocalPath>
+    <ItemsSccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</ItemsSccProvider>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Console\Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CriticalSection.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Devices\ClockHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Devices\MemoryClass.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)MemoryHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Network\Connection.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Network\Tcp\TcpClient.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Network\Tcp\TcpConnection.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Network\Tcp\TcpServer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Network\Udp\UdpServer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Network\WiFi\WiFiConnection.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ResourceHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Runtime\Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Storage\AppDataHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Storage\Filesystem\Directory.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Storage\Filesystem\File.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Storage\Filesystem\FileHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)System.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TaskClass.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TimeHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TypeHelper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Console\Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Devices\ClockHelper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Devices\MemoryClass.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)MemoryHelper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Network\Connection.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Network\Tcp\TcpClient.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Network\Tcp\TcpConnection.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Network\Tcp\TcpServer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Network\Udp\UdpServer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Network\WiFi\WiFiConnection.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ResourceHelper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Runtime\Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Storage\AppDataHelper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Storage\Filesystem\Directory.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Storage\Filesystem\File.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Storage\Filesystem\FileHelper.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)System.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TimeHelper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Configuration\Compiler.props" />
+    <None Include="$(MSBuildThisFileDirectory)Configuration\Configuration.props" />
+    <None Include="$(MSBuildThisFileDirectory)Configuration\Default.props" />
+    <None Include="$(MSBuildThisFileDirectory)Configuration\Globals.props" />
+    <None Include="$(MSBuildThisFileDirectory)Configuration\Platform.props" />
+  </ItemGroup>
+</Project>

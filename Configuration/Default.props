@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(SolutionDir)Default\Configuration\Default.props" />
+  <PropertyGroup>
+    <IncludePath>$(SolutionDir);$(ProjectDir)</IncludePath>
+    <MultiProcNumber>16</MultiProcNumber>
+    <RemoteDebuggerCommand>projects/$(ProjectName)/$(TargetConfig)/$(TargetPlatform)/$(Platform)/$(TargetName)$(TargetExt)</RemoteDebuggerCommand>
+    <RemoteDebuggerWorkingDirectory>projects/$(ProjectName)/$(TargetConfig)/$(TargetPlatform)/$(Platform)</RemoteDebuggerWorkingDirectory>
+  </PropertyGroup>
+</Project>

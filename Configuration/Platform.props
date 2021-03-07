@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Linux Debug|x86">
+      <Configuration>Linux Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Linux Release|x86">
+      <Configuration>Linux Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Linux Debug|x64">
+      <Configuration>Linux Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Linux Release|x64">
+      <Configuration>Linux Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Linux Debug|ARM">
+      <Configuration>Linux Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Linux Release|ARM">
+      <Configuration>Linux Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Linux Debug|ARM64">
+      <Configuration>Linux Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Linux Release|ARM64">
+      <Configuration>Linux Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Linux Debug'">
+    <TargetConfig>Debug</TargetConfig>
+    <TargetPlatform>Linux</TargetPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Linux Release'">
+    <TargetConfig>Release</TargetConfig>
+    <TargetPlatform>Linux</TargetPlatform>
+  </PropertyGroup>
+</Project>
