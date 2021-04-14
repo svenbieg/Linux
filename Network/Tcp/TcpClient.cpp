@@ -9,8 +9,10 @@
 // Using
 //=======
 
+#include <netinet/in.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
+#include <errno.h>
 #include <netdb.h>
 #include <poll.h>
 #include <unistd.h>
@@ -61,7 +63,7 @@ Application::Current->Loop.Remove(this);
 hUrl=nullptr;
 uPort=0;
 uStatus=TcpClientStatus::Closed;
-Closed();
+Closed(this);
 }
 
 VOID TcpClient::Connect(Handle<String> hurl, WORD uport)

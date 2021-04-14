@@ -9,8 +9,10 @@
 // Using
 //=======
 
+#include <netinet/in.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
+#include <errno.h>
 #include <netdb.h>
 #include <unistd.h>
 #include "Core/Application.h"
@@ -53,7 +55,7 @@ if(iSocket!=-1)
 	iSocket=-1;
 	}
 Application::Current->Loop.Remove(this);
-Closed();
+Closed(this);
 }
 
 VOID TcpServer::Listen(WORD uport)

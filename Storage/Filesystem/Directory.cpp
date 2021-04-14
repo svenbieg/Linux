@@ -10,6 +10,7 @@
 //=======
 
 #include <dirent.h>
+#include <errno.h>
 #include "Directory.h"
 #include "File.h"
 #include "FileHelper.h"
@@ -39,6 +40,23 @@ pDirectory(nullptr)
 // Common
 //========
 
+VOID Directory::Close()
+{
+if(pDirectory)
+	{
+	closedir((DIR*)pDirectory);
+	pDirectory=nullptr;
+	}
+}
+
+Handle<Storage::File> Directory::CreateFile(Handle<String> path, FileCreateMode create, FileAccessMode access, FileShareMode share)
+{
+Handle<Filesystem::File> file=new Filesystem::File(path);
+if(!file->Create(create, access, share))
+	return nullptr;
+return file;
+}
+
 Handle<Convertible> Directory::Get(Handle<String> hpath)
 {
 if(!hpath)
@@ -57,8 +75,8 @@ Handle<String> hitempath=new String("%s/%s", hPath->Begin(), hname->Begin());
 FILE* pfile=fopen(hitempath->Begin(), "r+");
 if(pfile)
 	{
-	fseeko64(pfile, 0, SEEK_END);
-	UINT64 usize=ftello64(pfile);
+	fseeko(pfile, 0, SEEK_END);
+	UINT64 usize=ftello(pfile);
 	fclose(pfile);
 	return new File(hitempath, usize);
 	}

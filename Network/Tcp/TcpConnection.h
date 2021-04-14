@@ -52,6 +52,7 @@ public:
 	Event<TcpConnection> Closed;
 	Event<TcpConnection> DataReceived;
 	Event<TcpConnection> DataSent;
+	Handle<PacketBuffer> InputBuffer;
 	Event<TcpConnection> Send;
 	VOID SetTimeout(UINT Timeout);
 	VOID Skip() {}
@@ -69,7 +70,6 @@ private:
 	// Common
 	VOID CloseInternal();
 	VOID OnLoop();
-	PacketBuffer cInputBuffer;
 	INT iSocket;
 	TcpConnectionStatus uStatus;
 	UINT64 uTimeout;

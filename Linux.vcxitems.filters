@@ -44,8 +44,24 @@
       <Filter>Network\Udp</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)MemoryHelper.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Runtime\Application.cpp">
-      <Filter>Runtime</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Devices\Serial\SerialPort.cpp">
+      <Filter>Devices\Serial</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TaskClass.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Devices\Storage\BlockDevice.cpp">
+      <Filter>Devices\Storage</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\OpenGL\DeviceContext.cpp">
+      <Filter>Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\OpenGL\Bitmap.cpp">
+      <Filter>Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\OpenGL\WindowSurface.cpp">
+      <Filter>Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Graphics\OpenGL\Surface.cpp">
+      <Filter>Graphics\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,8 +112,22 @@
       <Filter>Network\Udp</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)MemoryHelper.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Runtime\Application.h">
-      <Filter>Runtime</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Devices\Serial\SerialPort.h">
+      <Filter>Devices\Serial</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TaskHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\OpenGL\DeviceContext.h">
+      <Filter>Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)SignalClass.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\OpenGL\Bitmap.h">
+      <Filter>Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\OpenGL\WindowSurface.h">
+      <Filter>Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Graphics\OpenGL\Surface.h">
+      <Filter>Graphics\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -128,8 +158,17 @@
     <Filter Include="Network\Udp">
       <UniqueIdentifier>{f1bef017-c21c-4717-bf54-37b6eeb61c55}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime">
-      <UniqueIdentifier>{2279bb54-2583-4794-97a4-6c0303e4ecb9}</UniqueIdentifier>
+    <Filter Include="Devices\Serial">
+      <UniqueIdentifier>{9d31de8d-ab76-405e-9604-34250fe6f7df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Devices\Storage">
+      <UniqueIdentifier>{4fef0d31-ee04-49eb-b539-22d391b1eb52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{bc5c2eca-ee93-44bb-b08d-554cbdd8ffb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\OpenGL">
+      <UniqueIdentifier>{dbc1c4c0-eb7a-4eb0-a8db-c3e63240ac26}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

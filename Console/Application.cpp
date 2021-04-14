@@ -23,6 +23,8 @@ extern VOID Initialize();
 // Entry-Point
 //=============
 
+#ifdef _CONSOLE
+
 INT main()
 {
 Initialize();
@@ -30,11 +32,13 @@ auto happ=Application::Current;
 while(happ->Status==AppStatus::Running)
 	{
 	System::Memory->Update();
-	happ->Loop();
+	happ->Loop(happ);
 	Sleep(10);
 	}
 return 0;
 }
+
+#endif
 
 
 //===========
@@ -49,7 +53,7 @@ namespace Console {
 //==================
 
 Application::Application(Handle<String> hname):
-Runtime::Application(hname),
+Core::Application(hname),
 Status(AppStatus::Running)
 {
 Current=this;

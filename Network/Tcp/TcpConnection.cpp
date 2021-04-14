@@ -34,6 +34,7 @@ iSocket(isocket),
 uStatus(TcpConnectionStatus::Open),
 uTimeout(0)
 {
+InputBuffer=new PacketBuffer();
 Application::Current->Loop.Add(this, &TcpConnection::OnLoop);
 }
 
@@ -69,12 +70,12 @@ uTimeout=utime+utimeout;
 
 SIZE_T TcpConnection::Available()
 {
-return cInputBuffer.Available();
+return InputBuffer->Available();
 }
 
 SIZE_T TcpConnection::Read(VOID* pbuf, SIZE_T usize)
 {
-return cInputBuffer.Read(pbuf, usize);
+return InputBuffer->Read(pbuf, usize);
 }
 
 
@@ -111,7 +112,7 @@ if(iSocket!=-1)
 	iSocket=-1;
 	}
 Application::Current->Loop.Remove(this);
-cInputBuffer.Clear();
+InputBuffer->Clear();
 }
 
 VOID TcpConnection::OnLoop()
@@ -128,7 +129,7 @@ if(ilen==0)
 		Close();
 	return;
 	}
-cInputBuffer.Write(pbuf, ilen);
+InputBuffer->Write(pbuf, ilen);
 DataReceived(this);
 }
 

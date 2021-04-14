@@ -32,4 +32,6 @@
 //============
 
 VOID* Alloc(SIZE_T Size);
+VOID* DeviceAlloc(SIZE_T Size);
+VOID DeviceFree(VOID* Buffer);
 VOID Free(VOID* Buffer);

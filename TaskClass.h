@@ -9,152 +9,73 @@
 // Using
 //=======
 
-/*#include <pthread.h>
+#include <functional>
+#include <pthread.h>
 #include "Handle.h"
-#include "TaskHelper.h"
-
-
-//========
-// Status
-//========
-
-enum class TaskStatus
-{
-Running,
-Done,
-Cancel
-};
 
 
 //======
 // Task
 //======
 
-template <class RET>
 class Task: public Object
 {
 public:
+	// Common
+	volatile BOOL Cancel;
+	VOID Wait();
+
+protected:
 	// Con-/Destructors
-	Task(Function<RET()> Function): Task([Function](Task<RET>* ptask){ return Function(); }) {}
-	Task(Function<RET(Task<RET>*)> Function):
-		cFunction(Function),
-		hThis(this),
-		uException(Exception::None),
-		uStatus(TaskStatus::Running)
-		{
-		pthread_attr_t attr;
-		pthread_attr_init(&attr);
-		pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
-		pthread_create(&uId, &attr, RunAsync, this);
-		pthread_attr_destroy(&attr);
-		}
+	Task();
 
 	// Common
-	VOID Cancel()
-		{
-		if(uStatus==TaskStatus::Running)
-			uStatus=TaskStatus::Cancel;
-		}
-	RET Get()
-		{
-		if(hThis==nullptr)
-			return tReturnValue;
-		pthread_join(uId, nullptr);
-		if(uException!=Exception::None)
-			Throw(uException);
-		return tReturnValue;
-		}
-	TaskStatus GetStatus()const { return uStatus; }
-	VOID Wait()
-		{
-		if(hThis==nullptr)
-			return;
-		pthread_join(uId, nullptr);
-		if(uException!=Exception::None)
-			Throw(uException);
-		}
-
-private:
-	// Allgemein
-	static VOID* RunAsync(VOID* TaskPtr)
-		{
-		Task<RET>* ptask=(Task<RET>*)TaskPtr;
-		try
-			{
-			ptask->tReturnValue=ptask->cFunction(ptask);
-			}
-		catch(Exception exc)
-			{
-			ptask->uException=exc;
-			}
-		ptask->uStatus=TaskStatus::Done;
-		ptask->hThis=nullptr;
-		return nullptr;
-		}
-	Function<RET(Task<RET>*)> cFunction;
-	Handle<Task<RET>> hThis;
-	RET tReturnValue;
-	Exception uException;
+	Handle<Task> hThis;
 	pthread_t uId;
-	TaskStatus uStatus;
 };
 
-template <>
-class Task<VOID>: public Object
+
+//============
+// Task Typed
+//============
+
+template <class _owner_t, class... _args_t>
+class TaskTyped: public Task
 {
 public:
+	// Using
+	typedef VOID (_owner_t::*TaskProc)(_args_t...);
+
 	// Con-/Destructors
-	Task(Function<VOID()> Function): Task([Function](Task<VOID>* ptask){ Function(); }) {}
-	Task(Function<VOID(Task<VOID>*)> Function):
-		cFunction(Function),
-		hThis(this),
-		uException(Exception::None),
-		uStatus(TaskStatus::Running)
+	TaskTyped(_owner_t* Owner, TaskProc Procedure):
+		hOwner(Owner),
+		pProcedure(Procedure)
+		{}
+
+	// Common
+	VOID Run(_args_t... Arguments)
 		{
+		if(hThis)
+			return;
+		hThis=this;
+		cProcedure=[this, Arguments...](){ (hOwner->*pProcedure)(Arguments...); };
 		pthread_attr_t attr;
 		pthread_attr_init(&attr);
 		pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
-		pthread_create(&uId, &attr, RunAsync, this);
+		pthread_create(&uId, &attr, DoTask, this);
 		pthread_attr_destroy(&attr);
 		}
 
-	// Common
-	VOID Cancel()
-		{
-		if(uStatus==TaskStatus::Running)
-			uStatus=TaskStatus::Cancel;
-		}
-	TaskStatus GetStatus()const { return uStatus; }
-	VOID Wait()
-		{
-		if(hThis==nullptr)
-			return;
-		pthread_join(uId, nullptr);
-		if(uException!=Exception::None)
-			Throw(uException);
-		}
-
 private:
-	// Allgemein
-	static VOID* RunAsync(VOID* TaskPtr)
+	// Common
+	static VOID* DoTask(VOID* Param)
 		{
-		Task<VOID>* ptask=(Task<VOID>*)TaskPtr;
-		try
-			{
-			ptask->cFunction(ptask);
-			}
-		catch(Exception exc)
-			{
-			ptask->uException=exc;
-			}
-		ptask->uStatus=TaskStatus::Done;
-		ptask->hThis=nullptr;
+		Handle<TaskTyped> task=(TaskTyped*)Param;
+		task->cProcedure();
+		task->hThis=nullptr;
 		return nullptr;
 		}
-	Function<VOID(Task<VOID>*)> cFunction;
-	Handle<Task<VOID>> hThis;
-	Exception uException;
-	pthread_t uId;
-	TaskStatus uStatus;
+	std::function<VOID()> cProcedure;
+	Handle<_owner_t> hOwner;
+	TaskProc pProcedure;
 };
-*/

@@ -5,6 +5,13 @@
 #pragma once
 
 
+//=======
+// Using
+//=======
+
+#include "Storage/Directory.h"
+
+
 //===========
 // Namespace
 //===========
@@ -16,7 +23,7 @@ namespace Storage {
 // Common
 //========
 
-Handle<String> GetAppDataLocalPath();
-Handle<String> GetAppDataNetworkPath();
+Handle<Directory> GetAppDataLocal();
+Handle<Directory> GetAppDataNetwork();
 
 }

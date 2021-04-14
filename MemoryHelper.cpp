@@ -17,12 +17,22 @@
 // Allocation
 //============
 
-VOID* Alloc(SIZE_T usize)
+VOID* Alloc(SIZE_T size)
 {
-return malloc(usize);
+return malloc(size);
 }
 
-VOID Free(VOID* pbuf)
+VOID* DeviceAlloc(SIZE_T size)
 {
-free(pbuf);
+return memalign(16, size);
+}
+
+VOID DeviceFree(VOID* buf)
+{
+free(buf);
+}
+
+VOID Free(VOID* buf)
+{
+free(buf);
 }

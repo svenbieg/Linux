@@ -9,7 +9,15 @@
 // Using
 //=======
 
-#include <mutex>
+#include <pthread.h>
+#include "TypeHelper.h"
+
+
+//======================
+// Forward-Declarations
+//======================
+
+class Signal;
 
 
 //==================
@@ -19,16 +27,20 @@
 class CriticalSection
 {
 public:
+	// Friends
+	friend Signal;
+
 	// Con-/Destructors
-	CriticalSection() {}
+	CriticalSection() { pthread_mutex_init(&cMutex, nullptr); }
+	~CriticalSection() { pthread_mutex_destroy(&cMutex); }
 
 	// Common
-	inline BOOL IsLocked() { if(cMutex.try_lock()){ cMutex.unlock(); return false; } return true; }
-	inline VOID Lock() { cMutex.lock(); }
-	inline BOOL TryLock() { return cMutex.try_lock(); }
-	inline VOID Unlock() { cMutex.unlock(); }
+	inline BOOL IsLocked() { if(pthread_mutex_trylock(&cMutex)){ pthread_mutex_unlock(&cMutex); return false; } return true; }
+	inline VOID Lock() { pthread_mutex_lock(&cMutex); }
+	inline BOOL TryLock() { return pthread_mutex_trylock(&cMutex); }
+	inline VOID Unlock() { pthread_mutex_unlock(&cMutex); }
 
 private:
 	// Common
-	std::mutex cMutex;
+	pthread_mutex_t cMutex;
 };

@@ -31,7 +31,10 @@ public:
 	Connection();
 
 	// Common
+	VOID Connect()override {}
 	static Handle<Connection> Current;
+	VOID Disconnect()override {}
+	BOOL IsConnected()override { return true; }
 };
 
 }}

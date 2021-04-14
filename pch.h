@@ -16,10 +16,13 @@
 // Forward-Declarations
 //======================
 
+#include "CriticalSection.h"
 #include "MemoryHelper.h"
 #include "ResourceHelper.h"
+#include "TaskHelper.h"
 #include "TimeHelper.h"
 #include "TypeHelper.h"
+#include "SignalClass.h"
 
 
 //=======
@@ -34,3 +37,4 @@
 //========
 
 #include "Console/Application.h"
+#include "Framework/Application.h"

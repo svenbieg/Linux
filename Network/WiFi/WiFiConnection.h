@@ -45,12 +45,12 @@ public:
 	Handle<String> AccessPointPassword;
 	Handle<IpAddress> AccessPointSubnet;
 	VOID Close();
-	VOID Connect();
+	VOID Connect()override;
 	Event<WiFiConnection> Connected;
 	static Handle<WiFiConnection> Current;
-	VOID Disconnect();
+	VOID Disconnect()override;
 	Event<WiFiConnection> Disconnected;
-	BOOL IsConnected()const { return StationIp->Get()!=0; }
+	BOOL IsConnected()override { return StationIp->Get()!=0; }
 	Handle<IpAddress> StationIp;
 	Handle<IpAddress> StationGateway;
 	Handle<StringVariable> StationNetwork;

@@ -10,10 +10,11 @@
 //=======
 
 #include <unistd.h>
-#include "Runtime/Application.h"
+#include "Core/Application.h"
+#include "Storage/Filesystem/Directory.h"
 #include "AppDataHelper.h"
 
-using namespace Runtime;
+using namespace Core;
 
 
 //===========
@@ -27,24 +28,24 @@ namespace Storage {
 // Common
 //========
 
-Handle<String> GetAppDataLocalPath()
+Handle<Directory> GetAppDataLocal()
 {
-CHAR puser[32];
-getlogin_r(puser, 32);
 auto hname=Application::Current->Name;
 if(!hname)
 	return nullptr;
-return new String("/home/%s/AppData/Local/%s", puser, hname->Begin());
+auto login=getlogin();
+Handle<String> path=new String("/home/%s/AppData/Local/%s", login, hname->Begin());
+return new Filesystem::Directory("Local", path);
 }
 
-Handle<String> GetAppDataNetworkPath()
+Handle<Directory> GetAppDataNetwork()
 {
-CHAR puser[32];
-getlogin_r(puser, 32);
 auto hname=Application::Current->Name;
 if(!hname)
 	return nullptr;
-return new String("/home/%s/AppData/Network/%s", puser, hname->Begin());
+auto login=getlogin();
+Handle<String> path=new String("/home/%s/AppData/Network/%s", login, hname->Begin());
+return new Filesystem::Directory("Network", path);
 }
 
 }

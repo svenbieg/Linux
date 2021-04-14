@@ -31,6 +31,8 @@ public:
 	Directory(Handle<String> Name, Handle<String> Path=nullptr, Handle<Storage::Directory> Parent=nullptr);
 
 	// Common
+	VOID Close()override;
+	Handle<Storage::File> CreateFile(Handle<String> Path, FileCreateMode CreateMode, FileAccessMode AccessMode, FileShareMode ShareMode)override;
 	Handle<Convertible> Get(Handle<String> Path)override;
 
 protected:
