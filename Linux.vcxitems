@@ -34,7 +34,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Network\Tcp\TcpServer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Network\Udp\UdpServer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Network\WiFi\WiFiConnection.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Platform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ResourceHelper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)SignalClass.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Storage\AppDataHelper.h" />

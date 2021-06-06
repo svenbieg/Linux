@@ -1,6 +1,6 @@
-//=======
-// pch.h
-//=======
+//============
+// Platform.h
+//============
 
 #pragma once
 
@@ -37,4 +37,3 @@
 //========
 
 #include "Console/Application.h"
-#include "Framework/Application.h"

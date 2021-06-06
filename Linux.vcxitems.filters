@@ -68,7 +68,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TaskClass.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CriticalSection.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TimeHelper.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Platform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Console\Application.h">
       <Filter>Console</Filter>
     </ClInclude>

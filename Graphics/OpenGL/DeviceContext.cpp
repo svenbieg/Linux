@@ -42,7 +42,6 @@ EGLint attribs[]=
 	};
 EGLint config_count;
 eglChooseConfig(pDisplay, attribs, &pConfiguration, 1, &config_count);
-EGLint format;
 eglGetConfigAttrib(pDisplay, pConfiguration, EGL_NATIVE_VISUAL_ID, &iFormat);
 pContext=eglCreateContext(pDisplay, pConfiguration, NULL, NULL);
 glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
